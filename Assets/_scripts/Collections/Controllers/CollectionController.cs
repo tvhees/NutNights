@@ -1,122 +1,124 @@
 ﻿using System.Collections.Generic;
+using Collections;
 using UnityEngine.Assertions;
 
-namespace Collections.Controllers
+public abstract class CollectionController : Manager
 {
-    public abstract class CollectionController : Manager
+    protected ICollectionObject CollectionObject;
+
+    protected List<Card> Cards = new List<Card>();
+
+    public bool IsEmpty
     {
-        protected ICollectionObject CollectionObject;
+        get { return Cards.Count <= 0; }
+    }
 
-        protected List<Card> Cards;
-        public bool IsEmpty { get { return Cards.Count <= 0; } }
+    public virtual void OnGameStart(params Collection[] dependencies)
+    {
+        Cards = new List<Card>();
+    }
 
-        public virtual void OnGameStart(params Collection[] dependencies)
-        {
-            Cards = new List<Card>();
-        }
+    public void SetCollectionObject(ICollectionObject collectionObject)
+    {
+        this.CollectionObject = collectionObject;
+    }
 
-        public void SetCollectionObject(ICollectionObject collectionObject)
-        {
-            this.CollectionObject = collectionObject;
-        }
+    public virtual void ResetCollection()
+    {
+        Cards.Clear();
+        CollectionObject.ResetCollection();
+    }
 
-        public virtual void ResetCollection()
-        {
-            Cards.Clear();
-            CollectionObject.ResetCollection();
-        }
+    public void MoveCardTo(CollectionController target, bool toFront = false)
+    {
+        MoveCardTo(target, 0, toFront);
+    }
 
-        public void MoveCardTo(CollectionController target, bool toFront = false)
-        {
-            MoveCardTo(target, 0, toFront);
-        }
+    public void MoveCardTo(CollectionController target, int index, bool toFront = false)
+    {
+        var card = GetCard(index);
+        if (toFront)
+            target.InsertCard(card);
+        else
+            target.AddCard(card);
+        Cards.Remove(card);
+        UpdateView();
+    }
 
-        public void MoveCardTo(CollectionController target, int index, bool toFront = false)
-        {
-            var card = GetCard(index);
-            if (toFront)
-                target.InsertCard(card);
-            else
-                target.AddCard(card);
-            Cards.Remove(card);
-            UpdateView();
-        }
+    public void MoveCardTo(CollectionController target, Card cardDef)
+    {
+        if (IsEmpty)
+            return;
+        var index = Cards.IndexOf(cardDef);
+        Assert.IsFalse(index < 0, index + " " + cardDef.color + " " + cardDef.type);
+        MoveCardTo(target, index);
+    }
 
-        public void MoveCardTo(CollectionController target, Card cardDef)
+    public void MoveAllTo(CollectionController target, bool toFront = false)
+    {
+        if (target == this)
+            return;
+
+        while (!IsEmpty)
+            MoveCardTo(target, toFront);
+    }
+
+    public void MoveCardsTo(CollectionController target, int number)
+    {
+        if (target == this)
+            return;
+
+        for (int i = 0; i < number; i++)
         {
             if (IsEmpty)
-                return;
-            var index = Cards.IndexOf(cardDef);
-            Assert.IsFalse(index < 0, index + " " + cardDef.color + " " + cardDef.type);
-            MoveCardTo(target, index);
+                break;
+
+            MoveCardTo(target);
         }
+    }
 
-        public void MoveAllTo(CollectionController target, bool toFront = false)
-        {
-            if (target == this)
-                return;
+    public bool HasCard(Card card)
+    {
+        return Cards.Contains(card);
+    }
 
-            while (!IsEmpty)
-                MoveCardTo(target, toFront);
-        }
+    public Card GetCard()
+    {
+        return GetCard(0);
+    }
 
-        public void MoveCardsTo(CollectionController target, int number)
-        {
-            if (target == this)
-                return;
+    public Card GetCard(int index)
+    {
+        return Cards[index];
+    }
 
-            for (int i = 0; i < number; i++)
-            {
-                if (IsEmpty)
-                    break;
+    public void AddCard(Card card)
+    {
+        Cards.Add(card);
+        UpdateView();
+    }
 
-                MoveCardTo(target);
-            }
-        }
+    public void InsertCard(Card card)
+    {
+        Cards.Insert(0, card);
+        UpdateView();
+    }
 
-        public bool HasCard(Card card)
-        {
-            return Cards.Contains(card);
-        }
+    public void SwapCards(int i, int j)
+    {
+        var temp = Cards[i];
+        Cards[i] = Cards[j];
+        Cards[j] = temp;
+        UpdateView();
+    }
 
-        public Card GetCard()
-        {
-            return GetCard(0);
-        }
+    public virtual void UpdateView()
+    {
+        CollectionObject.UpdateView(Cards);
+    }
 
-        public Card GetCard(int index)
-        {
-            return Cards[index];
-        }
-
-        public void AddCard(Card card)
-        {
-            Cards.Add(card);
-            UpdateView();
-        }
-
-        public void InsertCard(Card card)
-        {
-            Cards.Insert(0, card);
-            UpdateView();
-        }
-
-        public void SwapCards(int i, int j)
-        {
-            var temp = Cards[i];
-            Cards[i] = Cards[j];
-            Cards[j] = temp;
-            UpdateView();
-        }
-
-        public virtual void UpdateView()
-        {
-            CollectionObject.UpdateView(Cards);
-        }
-
-        public void Shuffle()
-        {
-            Cards.Shuffle();
-        }
+    public void Shuffle()
+    {
+        Cards.Shuffle();
     }
 }

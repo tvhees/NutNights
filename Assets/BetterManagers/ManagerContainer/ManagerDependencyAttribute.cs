@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
@@ -8,7 +9,7 @@ using UnityEngine.Assertions;
 using System.IO;
 using System.Linq;
 #endif
-
+[System.AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
 public class ManagerDependencyAttribute : System.Attribute
 {
     public readonly System.Type managerDependency;

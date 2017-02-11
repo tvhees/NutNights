@@ -20,7 +20,7 @@ namespace GameStates
 
         public virtual void EndState()
         {
-
+            gameObject.SetActive(false);
         }
 
         protected virtual void NextState()

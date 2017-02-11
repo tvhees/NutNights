@@ -20,6 +20,8 @@ namespace GameStates
 
         private void ToggleState(bool on)
         {
+            Debug.Log(gameObject);
+            Debug.Log(interactionShield);
             interactionShield.enabled = !on;
             completeProphecy.gameObject.SetActive(on);
         }

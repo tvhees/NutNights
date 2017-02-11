@@ -18,13 +18,13 @@ ISerializationCallbackReceiver
         public SerializedManagerAttributes(ManagerAttributes source)
         {
             Assert.IsNotNull(source.managerType);
-            managerTypeName = source.managerType.Name;
+            managerTypeName = source.managerType.FullName;
             isGlobalOnly    = source.isAlwaysGlobal;
-            Assert.IsNotNull(source.managerDepenedencyTypes);
-            managerDependencyTypeNames = new string[source.managerDepenedencyTypes.Length];
+            Assert.IsNotNull(source.managerDependencyTypes);
+            managerDependencyTypeNames = new string[source.managerDependencyTypes.Length];
             for(int i=0; i<managerDependencyTypeNames.Length; ++i)
             {
-                managerDependencyTypeNames[i] = source.managerDepenedencyTypes[i].Name;
+                managerDependencyTypeNames[i] = source.managerDependencyTypes[i].FullName;
             }
         }
         public string           managerTypeName;
@@ -45,13 +45,13 @@ ISerializationCallbackReceiver
 
             isAlwaysGlobal = type.GetCustomAttributes(typeof(ManagerAlwaysGlobalAttribute), true).Length > 0;
 
-            managerDepenedencyTypes = type.GetCustomAttributes(typeof(ManagerDependencyAttribute), true)
+            managerDependencyTypes = type.GetCustomAttributes(typeof(ManagerDependencyAttribute), true)
                 .Cast<ManagerDependencyAttribute>()
                 .SelectMany(x=>x.GetManagerDependencies())
                 .Distinct()
                 .ToArray();        
 
-            managerDependencyTypesLookup = new HashSet<System.Type>(managerDepenedencyTypes);
+            managerDependencyTypesLookup = new HashSet<System.Type>(managerDependencyTypes);
         }
         #endif
 
@@ -59,7 +59,7 @@ ISerializationCallbackReceiver
         {
             managerType  = null;
             isAlwaysGlobal = source.isGlobalOnly;
-            managerDepenedencyTypes = null;
+            managerDependencyTypes = null;
             managerDependencyTypesLookup = null;
 
             var assembly = GetType().Assembly;
@@ -67,8 +67,8 @@ ISerializationCallbackReceiver
             var list = new List<System.Type>();
             if(source.managerDependencyTypeNames!=null)
             {
-                managerDepenedencyTypes = new System.Type[source.managerDependencyTypeNames.Length];
-                for(int i=0; i<managerDepenedencyTypes.Length; ++i)
+                managerDependencyTypes = new System.Type[source.managerDependencyTypeNames.Length];
+                for(int i=0; i<managerDependencyTypes.Length; ++i)
                 {
                     if(string.IsNullOrEmpty(source.managerDependencyTypeNames[i])) continue;
                     var type = assembly.GetType(source.managerDependencyTypeNames[i]);
@@ -76,14 +76,14 @@ ISerializationCallbackReceiver
                     list.Add(type);
                 }
             }
-            managerDepenedencyTypes = list.ToArray(); 
+            managerDependencyTypes = list.ToArray(); 
 
-            managerDependencyTypesLookup = new HashSet<System.Type>(managerDepenedencyTypes);
+            managerDependencyTypesLookup = new HashSet<System.Type>(managerDependencyTypes);
         }
             
         public System.Type          managerType;
         public bool                 isAlwaysGlobal;
-        public System.Type[]        managerDepenedencyTypes;
+        public System.Type[]        managerDependencyTypes;
         public HashSet<System.Type> managerDependencyTypesLookup;
 
     }
@@ -100,16 +100,15 @@ ISerializationCallbackReceiver
         {
             m_serializedAttributes[i] = new SerializedManagerAttributes(e.Current);
             ++i;
-        } 
+        }
     }
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
-//        Debug.Log("ManagerAttributeCache: Loading Attributes");
         m_attributes.Clear();
         for(int i=0; i<m_serializedAttributes.Length; ++i)
         {
             var attributes = new ManagerAttributes(m_serializedAttributes[i]);
-//            Debug.Log("ManagerAttributeCache: "+attributes);
+            //            Debug.Log("ManagerAttributeCache: "+attributes);
             m_attributes.Add(attributes.managerType, attributes);
         }
     }
@@ -157,7 +156,6 @@ ISerializationCallbackReceiver
             var type = script.GetClass();
             instance.m_attributes[type] = new ManagerAttributes(type);
         }
-
         instance.hideFlags = HideFlags.NotEditable;
         UnityEditor.EditorUtility.SetDirty(instance);
         var so = new UnityEditor.SerializedObject(instance);
@@ -173,7 +171,7 @@ ISerializationCallbackReceiver
         ManagerAttributes attribs;
         if(instance.m_attributes.TryGetValue(managerType, out attribs))
         {
-            return attribs.managerDepenedencyTypes;
+            return attribs.managerDependencyTypes;
         }
 
         return new System.Type[0];
@@ -186,7 +184,7 @@ ISerializationCallbackReceiver
         Assert.IsTrue(typeof(Manager).IsAssignableFrom(managerType));
         Assert.IsTrue(typeof(Manager).IsAssignableFrom(dependsOn));
         ManagerAttributes attribs;
-        if(instance.m_attributes.TryGetValue(managerType, out attribs))
+        if (instance.m_attributes.TryGetValue(managerType, out attribs))
         {
             return attribs.managerDependencyTypesLookup.Contains(dependsOn);
         }

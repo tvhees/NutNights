@@ -10,7 +10,6 @@ using UnityEngine.Assertions.Must;
 public enum States { NewGame, Cleanup, WaitingForPlayer, Door, Prophecy, CompleteProphecy, Nightmare, ProcessingTurn, CheckingWinLoss, GameWon, GameLost }
 
 [CreateAssetMenu(fileName = "StateController.asset", menuName = "Controllers/State")]
-[ManagerDependency(typeof(GameController))]
 public class StateController : Manager
 {
     private State stateObject;
@@ -25,8 +24,11 @@ public class StateController : Manager
         this.stateObject = stateObject;
         allStates = stateObject.GetComponentsInChildren<StateBase>(true);
         current = allStates.First();
-        current.gameObject.SetActive(true);
-        current.StartState();
+    }
+
+    public void SetGameController(GameController gameController)
+    {
+        this.gameController = gameController;
     }
 
     public void MoveToNext()
@@ -44,7 +46,6 @@ public class StateController : Manager
     private void MoveToState(StateBase newStateBase)
     {
         current.EndState();
-        current.gameObject.SetActive(false);
         current = newStateBase;
         current.gameObject.SetActive(true);
         current.StartState();

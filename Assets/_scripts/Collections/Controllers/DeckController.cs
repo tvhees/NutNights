@@ -8,6 +8,7 @@ namespace Collections.Controllers
     {
         public override void OnGameStart(params Collection[] dependencies)
         {
+            ResetCollection();
             NewDeck();
         }
 

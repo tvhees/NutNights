@@ -7,17 +7,11 @@ using RSG;
 using UnityEngine;
 using UnityEngine.UI;
 
-public interface ICardController
-{
-    Toggle DiscardToggle { get; }
-    Button CreateCardButton(Transform parent);
-    void CreateCardButton(Transform parent, Card card);
-}
-
 [ManagerDependency(typeof(ManagerContainer))]
-public class Game : BaseMonoBehaviour, ICardController
+public class Game : BaseMonoBehaviour
 {
-    private HandController hand;
+    private HandController handController;
+    private GameController gameController;
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Toggle discardToggle;
@@ -26,9 +20,12 @@ public class Game : BaseMonoBehaviour, ICardController
     public bool FullHand { get { return GetManager<HandController>().IsFull; } }
     public Constants.CardType LastType { get { return GetManager<LabyrinthController>().LastType; } }
 
-    public void NewGame()
+    private void Start()
     {
-        GetManager<GameController>().NewGame();
+        gameController = GetManager<GameController>();
+        handController = GetManager<HandController>();
+        base.Awake();
+        gameController.SetGameObject(this);
     }
 
     public Button CreateCardButton(Transform parent)
@@ -47,26 +44,26 @@ public class Game : BaseMonoBehaviour, ICardController
     public void OnDiscardToggled(Toggle discardToggle)
     {
         Flags.isDiscarding = discardToggle.isOn;
-        hand.UpdateView();
+        handController.UpdateView();
     }
 
     public void OnCompleteProphecyPressed()
     {
-        GetManager<GameController>().OnCompleteProphecyPressed();
+        gameController.OnCompleteProphecyPressed();
     }
 
     public void OnDiscardHandPressed()
     {
-        GetManager<GameController>().OnDiscardHandPressed();
+        gameController.OnDiscardHandPressed();
     }
 
     public void OnDoorCardPressed(int i)
     {
-        GetManager<GameController>().OnDoorCardPressed(i);
+        gameController.OnDoorCardPressed(i);
     }
 
     public void OnDiscardFromDeckPressed()
     {
-        GetManager<GameController>().OnDiscardFromDeckPressed();
+        gameController.OnDiscardFromDeckPressed();
     }
 }

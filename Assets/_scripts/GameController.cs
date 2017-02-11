@@ -2,10 +2,18 @@
 using Collections.Controllers;
 using UnityEngine;
 
-[ManagerDependency(typeof(DeckController))]
 [CreateAssetMenu(fileName = "GameController.asset", menuName = "Controllers/Game")]
+[ManagerDependency(typeof(DeckController))]
+[ManagerDependency(typeof(HandController))]
+[ManagerDependency(typeof(DiscardController))]
+[ManagerDependency(typeof(LabyrinthController))]
+[ManagerDependency(typeof(LimboController))]
+[ManagerDependency(typeof(DoorsController))]
+[ManagerDependency(typeof(ProphecyController))]
+[ManagerDependency(typeof(StateController))]
 public class GameController : Manager
 {
+    private Game gameObj;
     private DeckController deck;
     private HandController hand;
     private DiscardController discard;
@@ -15,21 +23,20 @@ public class GameController : Manager
     private ProphecyController prophecy;
     private StateController state;
 
-    private ICardController cardController;
-
     public bool Won { get { return doors.DoorsAcquired >= Constants.colors.Count * (int)Constants.CardType.Squirrel; } }
     public bool Lost { get { return deck.IsEmpty; } }
 
-    public void SetCardController(ICardController cardController)
+    public void SetGameObject(Game gameObj)
     {
-        this.cardController = cardController;
+        this.gameObj = gameObj;
+        NewGame();
     }
 
     public void NewGame()
     {
+        Debug.Log("New Game");
         GetManagers();
-        ResetCards();
-        GetManager<StateController>().MoveToState(States.NewGame);
+        state.MoveToState(States.NewGame);
     }
 
     public void GetManagers()
@@ -41,17 +48,8 @@ public class GameController : Manager
         limbo = GetManager<LimboController>();
         discard = GetManager<DiscardController>();
         prophecy = GetManager<ProphecyController>();
-    }
-
-    public void ResetCards()
-    {
-        deck.ResetCollection();
-        hand.ResetCollection();
-        labyrinth.ResetCollection();
-        doors.ResetCollection();
-        limbo.ResetCollection();
-        discard.ResetCollection();
-        prophecy.ResetCollection();
+        state = GetManager<StateController>();
+        state.SetGameController(this);
     }
 
     public void StartGame()
@@ -137,7 +135,7 @@ public class GameController : Manager
         var card = hand.GetCard(i);
         if (Flags.isDiscarding)
         {
-            cardController.DiscardToggle.isOn = false;
+            gameObj.DiscardToggle.isOn = false;
             if (card.type == Constants.CardType.Almond)
                 TriggerProphecy(i);
             else
