@@ -24,7 +24,7 @@ namespace Components
 
         public void OnDrag(PointerEventData eventData)
         {
-            Debug.Log("On Drag");
+            transform.position = eventData.position;
         }
     }
 }

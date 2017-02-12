@@ -36,7 +36,6 @@ namespace Controllers
 
         public void NewGame()
         {
-            Debug.Log("New Game");
             GetManagers();
             state.MoveToState(States.NewGame);
         }
@@ -102,7 +101,6 @@ namespace Controllers
 
         private void TriggerDoor(Color color)
         {
-            Debug.Log("Door drawn");
             if (!hand.HasCard(Card.Key(color)) || Flags.recycleDreamsAndDoors)
             {
                 deck.MoveCardTo(limbo);
@@ -116,7 +114,6 @@ namespace Controllers
 
         public void TriggerNightmare()
         {
-            Debug.Log("Nightmare drawn");
             if (Flags.recycleDreamsAndDoors)
             {
                 deck.MoveCardTo(limbo);
