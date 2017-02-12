@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Collections.Controllers;
+using Controllers;
+using GameData;
 using UnityEngine;
 
 namespace Collections

@@ -1,4 +1,6 @@
-﻿namespace GameStates
+﻿using Controllers;
+
+namespace GameStates
 {
     public class CheckingWinLoss : StateBase
     {

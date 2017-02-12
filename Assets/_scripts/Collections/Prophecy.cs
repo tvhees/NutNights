@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-using Collections.Controllers;
+using Components;
+using Controllers;
+using GameData;
 using UnityEngine.UI;
 
 namespace Collections

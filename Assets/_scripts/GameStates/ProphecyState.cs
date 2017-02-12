@@ -14,6 +14,7 @@ namespace GameStates
 
         public override void EndState()
         {
+            base.EndState();
             ToggleState(false);
         }
 

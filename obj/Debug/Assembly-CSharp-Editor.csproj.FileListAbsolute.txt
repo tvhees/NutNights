@@ -56,5 +56,5 @@ C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEditor
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor.pdb
-C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Assembly-CSharp-Editor-firstpass.pdb
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Mono.Posix.dll

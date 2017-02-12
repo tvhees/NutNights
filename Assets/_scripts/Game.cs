@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Collections;
-using Collections.Controllers;
+using Controllers;
+using GameData;
 using RSG;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,6 @@ public class Game : BaseMonoBehaviour
     [SerializeField] private Toggle discardToggle;
     public Toggle DiscardToggle { get { return discardToggle; } }
 
-    public bool FullHand { get { return GetManager<HandController>().IsFull; } }
     public Constants.CardType LastType { get { return GetManager<LabyrinthController>().LastType; } }
 
     private void Start()

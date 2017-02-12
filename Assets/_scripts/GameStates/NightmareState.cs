@@ -11,11 +11,14 @@ namespace GameStates
 
         public override void StartState()
         {
+            base.StartState();
             ToggleState(true);
         }
 
         public override void EndState()
         {
+            Debug.Log("End Nightmare");
+            base.EndState();
             ToggleState(false);
         }
 

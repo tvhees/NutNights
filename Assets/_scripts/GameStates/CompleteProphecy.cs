@@ -15,13 +15,12 @@ namespace GameStates
 
         public override void EndState()
         {
+            base.EndState();
             ToggleState(false);
         }
 
         private void ToggleState(bool on)
         {
-            Debug.Log(gameObject);
-            Debug.Log(interactionShield);
             interactionShield.enabled = !on;
             completeProphecy.gameObject.SetActive(on);
         }
