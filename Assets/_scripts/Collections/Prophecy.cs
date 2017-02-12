@@ -32,16 +32,16 @@ namespace Collections
 
         public override void UpdateView(List<Card> cards)
         {
-            var images = GetComponentsInChildren<Image>(true);
+            var buttons = GetComponentsInChildren<CardButton>(true);
             for (var i = 0; i < cards.Count; i++)
             {
-                images[i].gameObject.SetActive(true);
-                images[i].color = cards[i].color;
+                buttons[i].UpdateView(cards[i], true);
+                buttons[i].gameObject.SetActive(true);
             }
 
-            for (var i = cards.Count; i < images.Length; i++)
+            for (var i = cards.Count; i < buttons.Length; i++)
             {
-                images[i].gameObject.SetActive(false);
+                buttons[i].gameObject.SetActive(false);
             }
         }
 
