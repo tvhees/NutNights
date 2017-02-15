@@ -40,7 +40,6 @@ namespace Components
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            button.interactable = true;
             canvasGroup.blocksRaycasts = true;
             transform.position = startPosition;
         }

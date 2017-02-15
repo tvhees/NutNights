@@ -155,10 +155,10 @@ namespace Controllers
 
         private void TriggerProphecy(int i)
         {
+            state.MoveToState(States.Prophecy);
             while (!prophecy.IsFull && !deck.IsEmpty)
                 deck.MoveCardTo(prophecy);
             hand.MoveCardTo(discard, i);
-            state.MoveToState(States.Prophecy);
         }
 
         private void DiscardCardFromHand(int i)

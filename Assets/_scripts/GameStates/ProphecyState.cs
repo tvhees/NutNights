@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace GameStates
 {
-    public class ProphecyStateBase : StateBase {
+    public class ProphecyState : StateBase {
 
         [SerializeField] private Image interactionShield;
 
