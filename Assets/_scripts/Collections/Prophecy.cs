@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Components;
 using Controllers;
 using GameData;
-using UnityEngine.UI;
 
 namespace Collections
 {
@@ -33,9 +33,10 @@ namespace Collections
         public override void UpdateView(List<Card> cards)
         {
             var buttons = GetComponentsInChildren<CardButton>(true);
+            var isInteractible = GetManager<StateController>().IsInProphecy;
             for (var i = 0; i < cards.Count; i++)
             {
-                buttons[i].UpdateView(cards[i], true);
+                buttons[i].UpdateView(cards[i], isInteractible);
                 buttons[i].gameObject.SetActive(true);
             }
 

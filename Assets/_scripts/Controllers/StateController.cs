@@ -15,6 +15,7 @@ namespace Controllers
         private GameController gameController;
 
         public bool IsInCleanup { get { return current == allStates[(int)States.Cleanup]; } }
+        public bool IsInProphecy { get { return current == allStates[(int) States.Prophecy]; } }
 
         public void SetStateObject(State stateObject)
         {
