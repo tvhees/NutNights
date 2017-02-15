@@ -41,10 +41,16 @@ namespace Controllers
             MoveToState(allStates[(int)newState]);
         }
 
+        public void MoveToState(GameObject newState)
+        {
+            MoveToState(newState.GetComponent<StateBase>());
+        }
+
         private void MoveToState(StateBase newState)
         {
             current.EndState();
             current = newState;
+            stateObject.Current = newState.gameObject;
             current.gameObject.SetActive(true);
             current.StartState();
         }

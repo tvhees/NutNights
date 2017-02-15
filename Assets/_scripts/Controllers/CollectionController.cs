@@ -19,6 +19,7 @@ namespace Controllers
         public virtual void OnGameStart(params Collection[] dependencies)
         {
             Cards = new List<Card>();
+            UpdateView();
         }
 
         public void SetCollectionObject(ICollectionObject collectionObject)
