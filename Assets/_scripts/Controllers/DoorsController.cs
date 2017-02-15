@@ -11,9 +11,9 @@ namespace Controllers
             get { return Cards.Count; }
         }
 
-        public override void OnGameStart(params Collection[] dependencies)
+        public new void OnGameStart(params Collection[] dependencies)
         {
-
+            // Left empty
         }
 
         public void GetDoorFrom(CollectionController source, Color color)

@@ -19,6 +19,7 @@ namespace Controllers
         public virtual void OnGameStart(params Collection[] dependencies)
         {
             Cards = new List<Card>();
+            UpdateView();
         }
 
         public void SetCollectionObject(ICollectionObject collectionObject)
@@ -28,8 +29,7 @@ namespace Controllers
 
         public virtual void ResetCollection()
         {
-            Cards.Clear();
-            CollectionObject.ResetCollection();
+            CollectionObject.DestroyChildren();
         }
 
         public void MoveCardTo(CollectionController target, bool toFront = false)

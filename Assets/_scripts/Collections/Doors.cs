@@ -38,7 +38,6 @@ namespace Collections
 
             for (var i = buttons.Length; i < cards.Count; i++)
             {
-
                 var holderIndex = Constants.colors.IndexOf(cards[i].color);
                 game.CreateCardButton(holders[holderIndex].transform, cards[i]);
             }

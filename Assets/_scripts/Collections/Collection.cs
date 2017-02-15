@@ -9,7 +9,7 @@ namespace Collections
 {
     public interface ICollectionObject
     {
-        void ResetCollection();
+        void DestroyChildren();
         void UpdateView(List<Card> cards);
     }
 
@@ -25,7 +25,7 @@ namespace Collections
             Controller.SetCollectionObject(this);
         }
 
-        public virtual void ResetCollection()
+        public virtual void DestroyChildren()
         {
             if (transform.childCount <= 0) return;
 
