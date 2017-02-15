@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public enum States { NewGame, Cleanup, WaitingForPlayer, Door, Prophecy, CompleteProphecy, Nightmare, ProcessingTurn, CheckingWinLoss, GameWon, GameLost }
+    public enum States { ResetGame, NewGame, Cleanup, WaitingForPlayer, Door, Prophecy, CompleteProphecy, Nightmare, ProcessingTurn, CheckingWinLoss, GameWon, GameLost }
 
     [CreateAssetMenu(fileName = "StateController.asset", menuName = "Controllers/State")]
     public class StateController : Manager

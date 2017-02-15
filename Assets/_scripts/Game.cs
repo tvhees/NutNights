@@ -13,6 +13,7 @@ public class Game : BaseMonoBehaviour
 {
     private HandController handController;
     private GameController gameController;
+    private StateController stateController;
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Toggle discardToggle;
@@ -24,8 +25,14 @@ public class Game : BaseMonoBehaviour
     {
         gameController = GetManager<GameController>();
         handController = GetManager<HandController>();
+        stateController = GetManager<StateController>();
         base.Awake();
         gameController.SetGameObject(this);
+    }
+
+    public void NewGame()
+    {
+        stateController.MoveToState(States.ResetGame);
     }
 
     public Button CreateCardButton(Transform parent)

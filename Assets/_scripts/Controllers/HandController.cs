@@ -1,4 +1,5 @@
-﻿using Collections;
+﻿using System;
+using Collections;
 using GameData;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ namespace Controllers
     public class HandController : CollectionController
     {
         public bool IsFull { get { return Cards.Count >= Constants.handSize; } }
+
+        public override void ResetCollection()
+        {
+            // Left empty - don't want to delete children
+        }
 
         public void UpdateView(Color keyColor)
         {

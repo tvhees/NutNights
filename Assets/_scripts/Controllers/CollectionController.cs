@@ -28,8 +28,7 @@ namespace Controllers
 
         public virtual void ResetCollection()
         {
-            Cards.Clear();
-            CollectionObject.ResetCollection();
+            CollectionObject.DestroyChildren();
         }
 
         public void MoveCardTo(CollectionController target, bool toFront = false)
