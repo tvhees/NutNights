@@ -1,78 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
@@ -83,15 +11,13 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -207,17 +133,8 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs" />
-    <Compile Include="Assets\_scripts\Card.cs" />
     <Compile Include="Assets\_scripts\Collections\CardButton.cs" />
     <Compile Include="Assets\_scripts\Collections\Collection.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\CollectionController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\DeckController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\DiscardController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\DoorsController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\HandController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\LabyrinthController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\LimboController.cs" />
-    <Compile Include="Assets\_scripts\Collections\Controllers\ProphecyController.cs" />
     <Compile Include="Assets\_scripts\Collections\Deck.cs" />
     <Compile Include="Assets\_scripts\Collections\Discard.cs" />
     <Compile Include="Assets\_scripts\Collections\Doors.cs" />
@@ -225,11 +142,23 @@
     <Compile Include="Assets\_scripts\Collections\Labyrinth.cs" />
     <Compile Include="Assets\_scripts\Collections\Limbo.cs" />
     <Compile Include="Assets\_scripts\Collections\Prophecy.cs" />
-    <Compile Include="Assets\_scripts\Constants.cs" />
+    <Compile Include="Assets\_scripts\Components\Rearrangable.cs" />
+    <Compile Include="Assets\_scripts\Components\SpriteOutline.cs" />
+    <Compile Include="Assets\_scripts\Controllers\CollectionController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\DeckController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\DiscardController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\DoorsController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\GameController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\HandController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\LabyrinthController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\LimboController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\ProphecyController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\StateController.cs" />
     <Compile Include="Assets\_scripts\ExtensionMethods.cs" />
     <Compile Include="Assets\_scripts\Flags.cs" />
     <Compile Include="Assets\_scripts\Game.cs" />
-    <Compile Include="Assets\_scripts\GameController.cs" />
+    <Compile Include="Assets\_scripts\GameData\Card.cs" />
+    <Compile Include="Assets\_scripts\GameData\Constants.cs" />
     <Compile Include="Assets\_scripts\GameStates\CheckingWinLoss.cs" />
     <Compile Include="Assets\_scripts\GameStates\Cleanup.cs" />
     <Compile Include="Assets\_scripts\GameStates\CompleteProphecy.cs" />
@@ -239,12 +168,10 @@
     <Compile Include="Assets\_scripts\GameStates\NightmareState.cs" />
     <Compile Include="Assets\_scripts\GameStates\ProcessingTurn.cs" />
     <Compile Include="Assets\_scripts\GameStates\ProphecyState.cs" />
+    <Compile Include="Assets\_scripts\GameStates\ResetGame.cs" />
     <Compile Include="Assets\_scripts\GameStates\State.cs" />
     <Compile Include="Assets\_scripts\GameStates\StateBase.cs" />
-    <Compile Include="Assets\_scripts\GameStates\StateController.cs" />
     <Compile Include="Assets\_scripts\GameStates\WaitingForPlayer.cs" />
-    <Compile Include="Assets\_scripts\Rearrangable.cs" />
-    <Compile Include="Assets\_scripts\SpriteOutline.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
