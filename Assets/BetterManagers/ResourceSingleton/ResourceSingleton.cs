@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections;
 using System.IO;
-using UnityEditor.Callbacks;
 #if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
