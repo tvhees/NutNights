@@ -172,6 +172,7 @@
     <Compile Include="Assets\_scripts\GameStates\State.cs" />
     <Compile Include="Assets\_scripts\GameStates\StateBase.cs" />
     <Compile Include="Assets\_scripts\GameStates\WaitingForPlayer.cs" />
+    <Compile Include="Assets\_scripts\ObjectPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UnityTestTools\LICENSE.txt" />

@@ -14,7 +14,6 @@ namespace Collections
         {
             Controller = GetManager<HandController>();
             base.Awake();
-            AddButtons();
         }
 
         public void AddButtons()

@@ -61,10 +61,7 @@ namespace Controllers
 
         public void ResetGame()
         {
-            foreach (var controller in collections)
-            {
-                controller.ResetCollection();
-            }
+            gameObj.objectPool.Reset();
         }
 
         public void DrawCardRecursive()

@@ -1,4 +1,5 @@
-﻿using GameData;
+﻿using Collections;
+using GameData;
 using UnityEngine;
 
 namespace Controllers
@@ -8,9 +9,10 @@ namespace Controllers
     {
         public bool IsFull { get { return Cards.Count >= Constants.prophecySize; } }
 
-        public override void ResetCollection()
+        public override void OnGameStart(params Collection[] dependencies)
         {
-            // Left empty - don't want to destroy children
+            ((Prophecy)CollectionObject).AddButtons();
+            base.OnGameStart(dependencies);
         }
     }
 }

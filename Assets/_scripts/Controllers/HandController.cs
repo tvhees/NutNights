@@ -10,9 +10,10 @@ namespace Controllers
     {
         public bool IsFull { get { return Cards.Count >= Constants.handSize; } }
 
-        public override void ResetCollection()
+        public override void OnGameStart(params Collection[] dependencies)
         {
-            // Left empty - don't want to delete children
+            ((Hand)CollectionObject).AddButtons();
+            base.OnGameStart(dependencies);
         }
 
         public void UpdateView(Color keyColor)
