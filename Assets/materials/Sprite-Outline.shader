@@ -92,14 +92,14 @@
                 // If outline is enabled and the pixel is invisible, try to draw an outline
                 if(_Outline > 0){
                     float a = 0;
-                    float divisor = 0.01;
-                    for(int i = 100; i > 0; i--)
+                    float divisor = 0.1;
+                    for(int i = 10; i > 0; i--)
                     {
                         fixed4 pixelUp = tex2D(_MainTex, IN.texcoord + i * fixed2(0, _MainTex_TexelSize.y));
                         fixed4 pixelDown = tex2D(_MainTex, IN.texcoord - i * fixed2(0, _MainTex_TexelSize.y));
                         fixed4 pixelRight = tex2D(_MainTex, IN.texcoord + i * fixed2(_MainTex_TexelSize.x, 0));
                         fixed4 pixelLeft = tex2D(_MainTex, IN.texcoord - i * fixed2(_MainTex_TexelSize.x, 0));
-                        float multiplier = (divisor * (41 - i));
+                        float multiplier = (divisor * (11 - i));
                         float newA = multiplier * (pixelUp.a + pixelDown.a + pixelRight.a + pixelLeft.a);
                         a = newA > a ? newA : a;
                     }

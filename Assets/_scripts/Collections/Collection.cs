@@ -9,7 +9,6 @@ namespace Collections
 {
     public interface ICollectionObject
     {
-        void ResetCollection();
         void UpdateView(List<Card> cards);
     }
 
@@ -23,15 +22,6 @@ namespace Collections
         {
             base.Awake();
             Controller.SetCollectionObject(this);
-        }
-
-        public virtual void ResetCollection()
-        {
-            if (transform.childCount <= 0) return;
-
-            var children = GetComponentsInChildren<Image>();
-            foreach (var child in children)
-                Destroy(child.gameObject);
         }
 
         public void SwapCards(int i, int j)

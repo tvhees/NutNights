@@ -4,6 +4,7 @@ using GameData;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using System;
 
 namespace Collections
 {
@@ -13,7 +14,6 @@ namespace Collections
         {
             Controller = GetManager<HandController>();
             base.Awake();
-            AddButtons();
         }
 
         public void AddButtons()
@@ -29,12 +29,11 @@ namespace Collections
             }
         }
 
-        public override void UpdateView(List<Card> cards)
-        {
+        private void UpdateView(List<Card> cards, Func<int, bool> isInteractible) {
             var buttons = GetComponentsInChildren<CardButton>(true);
             for (var i = 0; i < cards.Count; i++)
             {
-                buttons[i].UpdateView(cards[i], IsCardInteractible(cards[i].type));
+                buttons[i].UpdateView(cards[i], isInteractible(i));
                 buttons[i].gameObject.SetActive(true);
             }
 
@@ -44,23 +43,14 @@ namespace Collections
             }
         }
 
+        public override void UpdateView(List<Card> cards)
+        {
+            UpdateView(cards, (i) => { return IsCardInteractible(cards[i].type); });
+        }
+
         public void UpdateView(List<Card> cards, Color keyColor)
         {
-            var buttons = GetComponentsInChildren<Button>(true);
-            var texts = GetComponentsInChildren<Text>(true);
-
-            for (var i = 0; i < cards.Count; i++)
-            {
-                buttons[i].GetComponent<Image>().color = cards[i].color;
-                texts[i].text = cards[i].type.ToString();
-                buttons[i].interactable = IsCardInteractible(cards[i], keyColor);
-                buttons[i].gameObject.SetActive(true);
-            }
-
-            for (var i = cards.Count; i < buttons.Length; i++)
-            {
-                buttons[i].gameObject.SetActive(false);
-            }
+            UpdateView(cards, (i) => { return IsCardInteractible(cards[i], keyColor); });
         }
 
         private bool IsCardInteractible(Constants.CardType type)

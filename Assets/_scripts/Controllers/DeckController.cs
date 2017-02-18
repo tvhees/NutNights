@@ -10,7 +10,7 @@ namespace Controllers
     {
         public override void OnGameStart(params Collection[] dependencies)
         {
-            ResetCollection();
+            base.OnGameStart();
             NewDeck();
         }
 

@@ -3,8 +3,10 @@ using UnityEngine.UI;
 
 namespace GameStates
 {
-    public class GameEnd : StateBase {
+    public class GameEnd : StateBase
+    {
 
+        [SerializeField] private GameObject endGamePanel;
         [SerializeField] private Text gameEndText;
         [SerializeField] private Button newGameButton;
 
@@ -21,6 +23,7 @@ namespace GameStates
 
         private void ToggleUiElements(bool on)
         {
+            endGamePanel.SetActive(on);
             gameEndText.gameObject.SetActive(on);
             newGameButton.gameObject.SetActive(on);
         }

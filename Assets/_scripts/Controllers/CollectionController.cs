@@ -19,17 +19,12 @@ namespace Controllers
         public virtual void OnGameStart(params Collection[] dependencies)
         {
             Cards = new List<Card>();
+            UpdateView();
         }
 
         public void SetCollectionObject(ICollectionObject collectionObject)
         {
             this.CollectionObject = collectionObject;
-        }
-
-        public virtual void ResetCollection()
-        {
-            Cards.Clear();
-            CollectionObject.ResetCollection();
         }
 
         public void MoveCardTo(CollectionController target, bool toFront = false)

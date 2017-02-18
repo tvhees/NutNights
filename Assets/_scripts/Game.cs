@@ -9,10 +9,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [ManagerDependency(typeof(ManagerContainer))]
-public class Game : BaseMonoBehaviour
+public class Game : BaseMonoBehaviour, IObjectPoolHolder
 {
     private HandController handController;
     private GameController gameController;
+    private StateController stateController;
+    public IObjectPool objectPool;
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Toggle discardToggle;
@@ -24,13 +26,20 @@ public class Game : BaseMonoBehaviour
     {
         gameController = GetManager<GameController>();
         handController = GetManager<HandController>();
+        stateController = GetManager<StateController>();
         base.Awake();
         gameController.SetGameObject(this);
     }
 
+    public void NewGame()
+    {
+        stateController.MoveToState(States.ResetGame);
+    }
+
     public Button CreateCardButton(Transform parent)
     {
-        var button = (Instantiate(buttonPrefab, parent) as GameObject).GetComponent<Button>();
+        var button = objectPool.GetObject().GetComponent<Button>();
+        button.transform.SetParent(parent);
         button.rectTransform().Reset();
         return button;
     }
@@ -65,5 +74,10 @@ public class Game : BaseMonoBehaviour
     public void OnDiscardFromDeckPressed()
     {
         gameController.OnDiscardFromDeckPressed();
+    }
+
+    public void AddPool(IObjectPool pool)
+    {
+        objectPool = pool;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public enum States { NewGame, Cleanup, WaitingForPlayer, Door, Prophecy, CompleteProphecy, Nightmare, ProcessingTurn, CheckingWinLoss, GameWon, GameLost }
+    public enum States { ResetGame, NewGame, Cleanup, WaitingForPlayer, Door, Prophecy, CompleteProphecy, Nightmare, ProcessingTurn, CheckingWinLoss, GameWon, GameLost }
 
     [CreateAssetMenu(fileName = "StateController.asset", menuName = "Controllers/State")]
     public class StateController : Manager
@@ -41,10 +41,16 @@ namespace Controllers
             MoveToState(allStates[(int)newState]);
         }
 
+        public void MoveToState(GameObject newState)
+        {
+            MoveToState(newState.GetComponent<StateBase>());
+        }
+
         private void MoveToState(StateBase newState)
         {
             current.EndState();
             current = newState;
+            stateObject.Current = newState.gameObject;
             current.gameObject.SetActive(true);
             current.StartState();
         }

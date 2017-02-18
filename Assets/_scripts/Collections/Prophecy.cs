@@ -12,10 +12,9 @@ namespace Collections
         {
             Controller = GetManager<ProphecyController>();
             base.Awake();
-            AddButtons();
         }
 
-        private void AddButtons()
+        public void AddButtons()
         {
             if (transform.childCount > 0)
                 return;

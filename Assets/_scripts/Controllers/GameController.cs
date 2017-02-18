@@ -24,6 +24,7 @@ namespace Controllers
         private DoorsController doors;
         private ProphecyController prophecy;
         private StateController state;
+        private CollectionController[] collections;
 
         public bool Won { get { return doors.DoorsAcquired >= Constants.colors.Count * (int)Constants.CardType.Squirrel; } }
         public bool Lost { get { return deck.IsEmpty; } }
@@ -31,17 +32,15 @@ namespace Controllers
         public void SetGameObject(Game gameObj)
         {
             this.gameObj = gameObj;
-            NewGame();
-        }
-
-        public void NewGame()
-        {
             GetManagers();
+            state.SetGameController(this);
             state.MoveToState(States.NewGame);
         }
 
         public void GetManagers()
         {
+            state = GetManager<StateController>();
+
             deck = GetManager<DeckController>();
             hand = GetManager<HandController>();
             labyrinth = GetManager<LabyrinthController>();
@@ -49,19 +48,20 @@ namespace Controllers
             limbo = GetManager<LimboController>();
             discard = GetManager<DiscardController>();
             prophecy = GetManager<ProphecyController>();
-            state = GetManager<StateController>();
-            state.SetGameController(this);
+            collections = new CollectionController[] {deck, hand, labyrinth, doors, limbo, discard, prophecy};
         }
 
         public void StartGame()
         {
-            deck.OnGameStart();
-            hand.OnGameStart();
-            labyrinth.OnGameStart();
-            doors.OnGameStart();
-            limbo.OnGameStart();
-            discard.OnGameStart();
-            prophecy.OnGameStart();
+            foreach (var controller in collections)
+            {
+                controller.OnGameStart();
+            }
+        }
+
+        public void ResetGame()
+        {
+            gameObj.objectPool.Reset();
         }
 
         public void DrawCardRecursive()

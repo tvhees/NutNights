@@ -140,6 +140,7 @@
     <Compile Include="Assets\_scripts\GameStates\NightmareState.cs" />
     <Compile Include="Assets\_scripts\GameStates\ProcessingTurn.cs" />
     <Compile Include="Assets\_scripts\GameStates\ProphecyState.cs" />
+    <Compile Include="Assets\_scripts\GameStates\ResetGame.cs" />
     <Compile Include="Assets\_scripts\GameStates\State.cs" />
     <Compile Include="Assets\_scripts\GameStates\StateBase.cs" />
     <Compile Include="Assets\_scripts\GameStates\WaitingForPlayer.cs" />
