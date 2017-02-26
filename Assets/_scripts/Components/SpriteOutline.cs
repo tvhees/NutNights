@@ -11,11 +11,9 @@ namespace Components
         public Vector2 OutlineDirection;
         [Range(1,20)]
         public int OutlineDistance = 1;
-        private Image image;
         private Outline outline;
 
         private void OnEnable() {
-            image = GetComponent<Image>();
             outline = GetComponent<Outline>();
             UpdateOutline(true);
         }
@@ -36,11 +34,11 @@ namespace Components
 
         [Obsolete]
         public void UpdateMatOutline(bool showOutline) {
-            var mat = Instantiate(image.material);
+            /*var mat = Instantiate(image.material);
             mat.SetFloat("_Outline", showOutline ? 1f : 0);
             mat.SetFloat("_OutlineDistance", OutlineDistance);
             mat.SetColor("_OutlineColor", OutlineColor);
-            image.material = mat;
+            image.material = mat;*/
         }
     }
 }
