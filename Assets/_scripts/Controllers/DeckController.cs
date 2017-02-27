@@ -17,7 +17,7 @@ namespace Controllers
         private void NewDeck()
         {
             Cards = Constants.CreateStartingDeck();
-            Cards.Shuffle();
+            Shuffle();
         }
 
         public void MoveCardsTo(CollectionController target, CollectionController limbo, int number)

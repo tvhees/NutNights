@@ -28,3 +28,5 @@ C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEngine
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\nunit.framework.xml
