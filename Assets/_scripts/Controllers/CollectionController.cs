@@ -5,7 +5,13 @@ using UnityEngine.Assertions;
 
 namespace Controllers
 {
-    public abstract class CollectionController : Manager
+    public interface ICollectionController
+    {
+        void AddCard(Card card);
+        void InsertCard(Card card);
+    }
+
+    public abstract class CollectionController : Manager, ICollectionController
     {
         protected ICollectionObject CollectionObject;
 
@@ -14,6 +20,11 @@ namespace Controllers
         public bool IsEmpty
         {
             get { return Cards.Count <= 0; }
+        }
+
+        public int Size
+        {
+            get { return Cards.Count; }
         }
 
         public virtual void OnGameStart(params Collection[] dependencies)
@@ -27,12 +38,12 @@ namespace Controllers
             this.CollectionObject = collectionObject;
         }
 
-        public void MoveCardTo(CollectionController target, bool toFront = false)
+        public void MoveCardTo(ICollectionController target, bool toFront = false)
         {
             MoveCardTo(target, 0, toFront);
         }
 
-        public void MoveCardTo(CollectionController target, int index, bool toFront = false)
+        public void MoveCardTo(ICollectionController target, int index, bool toFront = false)
         {
             var card = GetCard(index);
             if (toFront)
@@ -43,7 +54,7 @@ namespace Controllers
             UpdateView();
         }
 
-        public void MoveCardTo(CollectionController target, Card cardDef)
+        public void MoveCardTo(ICollectionController target, Card cardDef)
         {
             if (IsEmpty)
                 return;
@@ -52,18 +63,18 @@ namespace Controllers
             MoveCardTo(target, index);
         }
 
-        public void MoveAllTo(CollectionController target, bool toFront = false)
+        public void MoveAllTo(ICollectionController target, bool toFront = false)
         {
-            if (target == this)
+            if ((CollectionController)target == this)
                 return;
 
             while (!IsEmpty)
                 MoveCardTo(target, toFront);
         }
 
-        public void MoveCardsTo(CollectionController target, int number)
+        public void MoveCardsTo(ICollectionController target, int number)
         {
-            if (target == this)
+            if ((CollectionController)target == this)
                 return;
 
             for (int i = 0; i < number; i++)
