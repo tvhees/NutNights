@@ -115,6 +115,7 @@
     <Compile Include="Assets\_scripts\Collections\Limbo.cs" />
     <Compile Include="Assets\_scripts\Collections\Prophecy.cs" />
     <Compile Include="Assets\_scripts\Components\AnimateOnEvent.cs" />
+    <Compile Include="Assets\_scripts\Components\Path.cs" />
     <Compile Include="Assets\_scripts\Components\Rearrangable.cs" />
     <Compile Include="Assets\_scripts\Components\SpriteOutline.cs" />
     <Compile Include="Assets\_scripts\Controllers\CollectionController.cs" />
@@ -150,8 +151,11 @@
     <Compile Include="Assets\_scripts\UI\MainMenu.cs" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\materials\Sprite-OuterFill.shader" />
+    <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
     <None Include="Assets\materials\Sprite-Outline.shader" />
+    <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -172,6 +176,18 @@
     </Reference>
     <Reference Include="RSG.Promise">
       <HintPath>C:/Users/Torbjorn/Documents/HigherLevel/Onirim/Onirim/Assets/RSG.Promise.1.2.0.0/lib/net35/RSG.Promise.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:/Users/Torbjorn/Documents/HigherLevel/Onirim/Onirim/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>C:/Users/Torbjorn/Documents/HigherLevel/Onirim/Onirim/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>C:/Users/Torbjorn/Documents/HigherLevel/Onirim/Onirim/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>C:/Users/Torbjorn/Documents/HigherLevel/Onirim/Onirim/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
