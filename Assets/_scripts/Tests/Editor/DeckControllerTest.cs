@@ -27,12 +27,14 @@ namespace Tests
         }
 
         [Test]
-        public void MoveCardDecreasesDeckSize()
+        public void MoveCardDecreasesDeckSizeAndRemovesFirstCard()
         {
             var target = NSubstitute.Substitute.For<ICollectionController>();
             var size = deck.Size;
+            var card = deck.GetCard();
             deck.MoveCardTo(target);
             Assert.IsTrue(deck.Size == size - 1);
+            Assert.IsFalse(deck.GetCard() == card);
         }
 
         [Test]
@@ -42,6 +44,7 @@ namespace Tests
             var size = deck.Size;
             deck.AddCard(card);
             Assert.IsTrue(deck.Size == size + 1);
+            Assert.IsTrue(deck.GetCard(size) == card);
 
         }
 
