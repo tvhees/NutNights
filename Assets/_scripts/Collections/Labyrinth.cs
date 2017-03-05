@@ -2,6 +2,7 @@
 using Controllers;
 using GameData;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Collections
 {
@@ -11,6 +12,11 @@ namespace Collections
         {
             Controller = GetManager<LabyrinthController>();
             base.Awake();
+        }
+
+        public override Button AddButton(int index)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void UpdateView(List<Card> cards)

@@ -56,3 +56,13 @@ C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEditor
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor-firstpass.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\obj\Debug\Assembly-CSharp-Editor-firstpass.pdb
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween43.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween46.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween50.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTweenEditor.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween.xml
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween43.xml
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween46.xml
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween50.xml
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTweenEditor.xml

@@ -32,7 +32,7 @@ namespace Tests
             var target = NSubstitute.Substitute.For<ICollectionController>();
             var size = deck.Size;
             var card = deck.GetCard();
-            deck.MoveCardTo(target);
+            deck.MoveFirstCardTo(target);
             Assert.IsTrue(deck.Size == size - 1);
             Assert.IsFalse(deck.GetCard() == card);
         }

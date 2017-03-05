@@ -11,6 +11,11 @@ public class PathEditor : Editor
     private Transform pathTransform;
     private Quaternion pathRotation;
 
+    private const float HandleSize = 8.0f;
+    private const float PickSize = 10.0f;
+
+    private int selectedIndex = -1;
+
     private void GetPath()
     {
         path = target as Path;
@@ -65,13 +70,21 @@ public class PathEditor : Editor
     {
         var point = pathTransform.TransformPoint(path.Points[index]);
 
-        EditorGUI.BeginChangeCheck();
-        point = Handles.DoPositionHandle(point, pathRotation);
+        Handles.color = Color.white;
+        if (Handles.Button(point, pathRotation, HandleSize, PickSize, Handles.SphereCap)) {
+            selectedIndex = index;
+        }
 
-        if (EditorGUI.EndChangeCheck()) {
-            Undo.RecordObject(path, "Move Point");
-            EditorUtility.SetDirty(path);
-            path.Points[index] = pathTransform.InverseTransformPoint(point);
+        if (selectedIndex == index)
+        {
+            EditorGUI.BeginChangeCheck();
+            point = Handles.DoPositionHandle(point, pathRotation);
+
+            if (EditorGUI.EndChangeCheck()) {
+                Undo.RecordObject(path, "Move Point");
+                EditorUtility.SetDirty(path);
+                path.Points[index] = pathTransform.InverseTransformPoint(point);
+            }
         }
 
         return point;

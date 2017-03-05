@@ -35,13 +35,13 @@ namespace Controllers
                     case Constants.CardType.Acorn:
                     case Constants.CardType.Hickory:
                     case Constants.CardType.Almond:
-                        MoveCardTo(target);
+                        MoveFirstCardTo(target);
                         break;
                     case Constants.CardType.Squirrel:
-                        MoveCardTo(limbo);
+                        MoveFirstCardTo(limbo);
                         break;
                     case Constants.CardType.Nightmare:
-                        MoveCardTo(limbo);
+                        MoveFirstCardTo(limbo);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

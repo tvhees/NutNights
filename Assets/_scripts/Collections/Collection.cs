@@ -9,6 +9,8 @@ namespace Collections
 {
     public interface ICollectionObject
     {
+        Button AddButton(int index);
+        void RemoveButton(int index);
         void UpdateView(List<Card> cards);
     }
 
@@ -27,6 +29,13 @@ namespace Collections
         public void SwapCards(int i, int j)
         {
             Controller.SwapCards(i, j);
+        }
+
+        public abstract Button AddButton(int index);
+
+        public void RemoveButton(int index)
+        {
+            game.ReturnCardButton(transform.GetChild(index).GetComponent<Button>());
         }
 
         public abstract void UpdateView(List<Card> cards);

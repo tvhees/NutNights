@@ -32,6 +32,11 @@ namespace Collections
             }
         }
 
+        public override Button AddButton(int index)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void UpdateView(List<Card> cards)
         {
             var buttons = GetComponentsInChildren<Button>();

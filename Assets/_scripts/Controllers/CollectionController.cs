@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Collections;
 using GameData;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Controllers
@@ -38,18 +40,22 @@ namespace Controllers
             this.CollectionObject = collectionObject;
         }
 
-        public void MoveCardTo(ICollectionController target, bool toFront = false)
+        public void MoveFirstCardTo(ICollectionController target, bool toFront = false)
         {
             MoveCardTo(target, 0, toFront);
         }
 
-        public void MoveCardTo(ICollectionController target, int index, bool toFront = false)
+        public virtual void MoveCardTo(ICollectionController target, int index, bool toFront = false)
         {
             var card = GetCard(index);
             if (toFront)
+            {
                 target.InsertCard(card);
+            }
             else
+            {
                 target.AddCard(card);
+            }
             Cards.Remove(card);
             UpdateView();
         }
@@ -65,24 +71,31 @@ namespace Controllers
 
         public void MoveAllTo(ICollectionController target, bool toFront = false)
         {
-            if ((CollectionController)target == this)
+            if (ReferenceEquals(target, this))
+            {
                 return;
+            }
 
-            while (!IsEmpty)
-                MoveCardTo(target, toFront);
+            var n = Cards.Count;
+
+            for (var i = 0; i < n; i++)
+            {
+                Debug.Log(i);
+                MoveCardTo(target, i);
+            }
         }
 
         public void MoveCardsTo(ICollectionController target, int number)
         {
-            if ((CollectionController)target == this)
+            if (ReferenceEquals(target, this))
                 return;
 
-            for (int i = 0; i < number; i++)
+            for (var i = 0; i < number; i++)
             {
                 if (IsEmpty)
                     break;
 
-                MoveCardTo(target);
+                MoveFirstCardTo(target);
             }
         }
 
@@ -101,13 +114,13 @@ namespace Controllers
             return Cards[index];
         }
 
-        public void AddCard(Card card)
+        public virtual void AddCard(Card card)
         {
             Cards.Add(card);
             UpdateView();
         }
 
-        public void InsertCard(Card card)
+        public virtual void InsertCard(Card card)
         {
             Cards.Insert(0, card);
             UpdateView();
