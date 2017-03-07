@@ -19,21 +19,17 @@ public class PathEditor : Editor
     private void GetPath()
     {
         path = target as Path;
-        if (path == null)
-        {
-            return;
-        }
-
-        if (path.Points.Length < 2)
-        {
-            path.Reset();
-        }
     }
 
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
         GetPath();
+        if (path == null)
+        {
+            return;
+        }
+
         if (GUILayout.Button("Add Point")) {
             Undo.RecordObject(path, "Add Point");
             path.AddPoint();
@@ -68,7 +64,7 @@ public class PathEditor : Editor
 
     private Vector3 ShowPoint(int index)
     {
-        var point = pathTransform.TransformPoint(path.Points[index]);
+        var point = pathTransform.TransformPoint(path.GetPoint(index));
 
         Handles.color = Color.white;
         if (Handles.Button(point, pathRotation, HandleSize, PickSize, Handles.SphereCap)) {
@@ -83,7 +79,7 @@ public class PathEditor : Editor
             if (EditorGUI.EndChangeCheck()) {
                 Undo.RecordObject(path, "Move Point");
                 EditorUtility.SetDirty(path);
-                path.Points[index] = pathTransform.InverseTransformPoint(point);
+                path.SetPoint(index, pathTransform.InverseTransformPoint(point));
             }
         }
 

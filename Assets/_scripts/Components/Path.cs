@@ -6,20 +6,43 @@ namespace Components
 {
     public class Path : MonoBehaviour
     {
-        public Vector3[] Points = { new Vector3(0, 0, 0), new Vector3(1, 0, 0) };
+        [SerializeField] private Vector3[] points = { new Vector3(0, 0, 0), new Vector3(1, 0, 0) };
+
+        public Vector3[] Points {
+            get { if (points.Length < 2){ Reset(); }
+                return points;
+            }
+        }
+
         public Color PathColor = Color.white;
 
         public void Reset()
         {
-            Points = new[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0) };
+            points = new[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0) };
         }
 
         public void AddPoint()
         {
-            var index = Points.Length;
-            var point = Points[index - 1] + Vector3.right;
-            Array.Resize(ref Points, Points.Length + 1);
-            Points[index] = point;
+            var index = points.Length;
+            var point = points[index - 1] + Vector3.right;
+            Array.Resize(ref points, points.Length + 1);
+            points[index] = point;
+        }
+
+        public Vector3 GetPoint(int index)
+        {
+            return points[index];
+        }
+
+        public void SetPoint(int index, Vector3 point)
+        {
+            points[index] = point;
+        }
+
+        public Vector3 GetPoint(float fractionOfPath)
+        {
+            var index = Mathf.RoundToInt(fractionOfPath * points.Length);
+            return GetPoint(index);
         }
     }
 }

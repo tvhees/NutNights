@@ -10,7 +10,7 @@ namespace Controllers
     public interface ICollectionController
     {
         void AddCard(Card card);
-        void InsertCard(Card card);
+        void InsertCard(Card card, int index = 0);
     }
 
     public abstract class CollectionController : Manager, ICollectionController
@@ -76,12 +76,11 @@ namespace Controllers
                 return;
             }
 
-            var n = Cards.Count;
+            var n = Cards.Count - 1;
 
-            for (var i = 0; i < n; i++)
+            for (var i = n; i >= 0; i--)
             {
-                Debug.Log(i);
-                MoveCardTo(target, i);
+                MoveCardTo(target, i, toFront);
             }
         }
 
@@ -120,9 +119,9 @@ namespace Controllers
             UpdateView();
         }
 
-        public virtual void InsertCard(Card card)
+        public virtual void InsertCard(Card card, int index = 0)
         {
-            Cards.Insert(0, card);
+            Cards.Insert(index, card);
             UpdateView();
         }
 

@@ -11,7 +11,7 @@ namespace Collections
 {
     public class Hand : Collection
     {
-        public Path CardLocations;
+        public Path HoldPath;
 
         protected override void Awake()
         {
@@ -33,8 +33,9 @@ namespace Collections
         public override Button AddButton(int index)
         {
             var button = game.CreateCardButton(transform);
+            button.transform.SetSiblingIndex(index);
             button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(index));
-            button.rectTransform().localPosition = CardLocations.Points[index];
+            button.rectTransform().localPosition = HoldPath.GetPoint(index);
             button.rectTransform().Grow();
             return button;
         }
