@@ -1,4 +1,5 @@
-﻿using Collections;
+﻿using System.Collections.Generic;
+using Collections;
 using Controllers;
 using GameData;
 using JetBrains.Annotations;
@@ -19,7 +20,6 @@ namespace Tests
             var handObj = NSubstitute.Substitute.For<ICollectionObject>();
             hand.SetCollectionObject(handObj);
             hand.OnGameStart();
-            Debug.Log("Setup: " + hand.Size);
         }
 
         [TearDown]
@@ -36,22 +36,19 @@ namespace Tests
                 Assert.IsTrue(hand.LowestEmptyIndex == i);
                 hand.AddCard(new Card());
             }
-            Debug.Log(hand.Size);
         }
 
         [Test]
-        public void EmptyIndicesMatchRemovedCard()
+        public void EmptyIndexMatchesRemovedCard()
         {
             for(var i = 0; i < Constants.handSize; i++)
             {
                 hand.AddCard(new Card());
             }
             var target = NSubstitute.Substitute.For<ICollectionController>();
-            hand.MoveCardTo(target, 2);
-            hand.MoveCardTo(target, 3);
-            Debug.Log(hand.Size);
-            Assert.IsTrue(hand.LowestEmptyIndex == 2);
-            Assert.IsTrue(hand.Size == Constants.handSize - 2);
+            var index = 2;
+            hand.MoveCardTo(target, index);
+            Assert.AreEqual(index, hand.LowestEmptyIndex);
         }
 
         [Test]
@@ -61,11 +58,12 @@ namespace Tests
             {
                 hand.AddCard(new Card());
             }
-            Assert.IsTrue(hand.LowestEmptyIndex == -1);
+            Assert.IsTrue(hand.LowestEmptyIndex == Constants.handSize);
 
             var target = NSubstitute.Substitute.For<ICollectionController>();
             hand.MoveAllTo(target);
-            Assert.IsTrue(hand.EmptyIndices.Count == Constants.handSize);
+            Assert.IsTrue(hand.LowestEmptyIndex == 0);
+            Assert.IsTrue(hand.Indices.Count == 0);
         }
     }
 }
