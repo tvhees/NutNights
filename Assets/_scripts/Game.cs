@@ -41,6 +41,7 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
         var button = objectPool.GetObject().GetComponent<Button>();
         button.transform.SetParent(parent);
         button.rectTransform().Reset();
+        button.rectTransform().sizeDelta = new Vector2(100, 160);
         return button;
     }
 
@@ -48,6 +49,11 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
     {
         var button = CreateCardButton(parent).GetComponent<CardButton>();
         button.UpdateView(card, false);
+    }
+
+    public void ReturnCardButton(Button button)
+    {
+        objectPool.ReturnObject(button.gameObject);
     }
 
     public void OnDiscardToggled(Toggle discardToggle)

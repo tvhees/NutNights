@@ -127,7 +127,7 @@ public class ObjectPool : BaseMonoBehaviour, IObjectPool {
         return obj;
     }
 
-    void TakeObjectFromPool(GameObject obj)
+    private void TakeObjectFromPool(GameObject obj)
     {
         // Move the object from the pool list to the in use list and make it active
         inPool.Remove(obj);

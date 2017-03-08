@@ -10,7 +10,7 @@ namespace Controllers
             if (IsEmpty || target.IsEmpty) return;
 
             while (!IsEmpty)
-                MoveCardTo(target);
+                MoveFirstCardTo(target);
 
             target.Shuffle();
         }

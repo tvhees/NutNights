@@ -17,6 +17,11 @@ namespace Collections
             base.Awake();
         }
 
+        public override Button AddButton(int index)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void UpdateView(List<Card> cards)
         {
             remainingCards.text = cards.Count.ToString();

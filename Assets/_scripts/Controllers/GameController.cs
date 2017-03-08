@@ -86,7 +86,7 @@ namespace Controllers
                 case Constants.CardType.Acorn:
                 case Constants.CardType.Hickory:
                 case Constants.CardType.Almond:
-                    deck.MoveCardTo(hand);
+                    deck.MoveFirstCardTo(hand);
                     break;
                 case Constants.CardType.Squirrel:
                     TriggerDoor(card.color);
@@ -103,11 +103,11 @@ namespace Controllers
         {
             if (!hand.HasCard(Card.Key(color)) || Flags.recycleDreamsAndDoors)
             {
-                deck.MoveCardTo(limbo);
+                deck.MoveFirstCardTo(limbo);
                 return;
             }
 
-            deck.MoveCardTo(prophecy);
+            deck.MoveFirstCardTo(prophecy);
             state.MoveToState(States.Door);
             hand.UpdateView(color);
         }
@@ -116,11 +116,11 @@ namespace Controllers
         {
             if (Flags.recycleDreamsAndDoors)
             {
-                deck.MoveCardTo(limbo);
+                deck.MoveFirstCardTo(limbo);
                 return;
             }
 
-            deck.MoveCardTo(prophecy);
+            deck.MoveFirstCardTo(prophecy);
             state.MoveToState(States.Nightmare);
             hand.UpdateView();
         }
@@ -157,7 +157,7 @@ namespace Controllers
         {
             state.MoveToState(States.Prophecy);
             while (!prophecy.IsFull && !deck.IsEmpty)
-                deck.MoveCardTo(prophecy);
+                deck.MoveFirstCardTo(prophecy);
             hand.MoveCardTo(discard, i);
         }
 

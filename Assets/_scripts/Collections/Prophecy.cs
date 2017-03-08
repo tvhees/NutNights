@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Components;
 using Controllers;
 using GameData;
+using UnityEngine.UI;
 
 namespace Collections
 {
@@ -27,6 +28,11 @@ namespace Collections
                 button.gameObject.AddComponent<Rearrangable>();
                 button.gameObject.SetActive(false);
             }
+        }
+
+        public override Button AddButton(int index)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void UpdateView(List<Card> cards)

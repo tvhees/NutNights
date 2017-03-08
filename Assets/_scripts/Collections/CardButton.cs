@@ -1,6 +1,9 @@
 ﻿using Components;
 using GameData;
+using UnityEditor.Events;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Collections
@@ -10,6 +13,7 @@ namespace Collections
         public Button button;
         public Image buttonImage;
         public SpriteOutline spriteOutline;
+        public UnityEventDrawer cardEvent;
 
         public void UpdateView(Card card, bool interactible)
         {

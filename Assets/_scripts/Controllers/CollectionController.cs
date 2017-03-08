@@ -1,11 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Collections;
 using GameData;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Controllers
 {
-    public abstract class CollectionController : Manager
+    public interface ICollectionController
+    {
+        void AddCard(Card card);
+        void InsertCard(Card card, int index = 0);
+    }
+
+    public abstract class CollectionController : Manager, ICollectionController
     {
         protected ICollectionObject CollectionObject;
 
@@ -14,6 +22,11 @@ namespace Controllers
         public bool IsEmpty
         {
             get { return Cards.Count <= 0; }
+        }
+
+        public int Size
+        {
+            get { return Cards.Count; }
         }
 
         public virtual void OnGameStart(params Collection[] dependencies)
@@ -27,23 +40,27 @@ namespace Controllers
             this.CollectionObject = collectionObject;
         }
 
-        public void MoveCardTo(CollectionController target, bool toFront = false)
+        public void MoveFirstCardTo(ICollectionController target, bool toFront = false)
         {
             MoveCardTo(target, 0, toFront);
         }
 
-        public void MoveCardTo(CollectionController target, int index, bool toFront = false)
+        public virtual void MoveCardTo(ICollectionController target, int index, bool toFront = false)
         {
             var card = GetCard(index);
             if (toFront)
+            {
                 target.InsertCard(card);
+            }
             else
+            {
                 target.AddCard(card);
+            }
             Cards.Remove(card);
             UpdateView();
         }
 
-        public void MoveCardTo(CollectionController target, Card cardDef)
+        public void MoveCardTo(ICollectionController target, Card cardDef)
         {
             if (IsEmpty)
                 return;
@@ -52,26 +69,32 @@ namespace Controllers
             MoveCardTo(target, index);
         }
 
-        public void MoveAllTo(CollectionController target, bool toFront = false)
+        public void MoveAllTo(ICollectionController target, bool toFront = false)
         {
-            if (target == this)
+            if (ReferenceEquals(target, this))
+            {
                 return;
+            }
 
-            while (!IsEmpty)
-                MoveCardTo(target, toFront);
+            var n = Cards.Count - 1;
+
+            for (var i = n; i >= 0; i--)
+            {
+                MoveCardTo(target, i, toFront);
+            }
         }
 
-        public void MoveCardsTo(CollectionController target, int number)
+        public void MoveCardsTo(ICollectionController target, int number)
         {
-            if (target == this)
+            if (ReferenceEquals(target, this))
                 return;
 
-            for (int i = 0; i < number; i++)
+            for (var i = 0; i < number; i++)
             {
                 if (IsEmpty)
                     break;
 
-                MoveCardTo(target);
+                MoveFirstCardTo(target);
             }
         }
 
@@ -90,15 +113,15 @@ namespace Controllers
             return Cards[index];
         }
 
-        public void AddCard(Card card)
+        public virtual void AddCard(Card card)
         {
             Cards.Add(card);
             UpdateView();
         }
 
-        public void InsertCard(Card card)
+        public virtual void InsertCard(Card card, int index = 0)
         {
-            Cards.Insert(0, card);
+            Cards.Insert(index, card);
             UpdateView();
         }
 

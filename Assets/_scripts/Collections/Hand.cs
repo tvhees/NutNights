@@ -2,14 +2,17 @@
 using Controllers;
 using GameData;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.UI;
 using System;
+using Components;
+using DG.Tweening;
+using UnityEngine.UI;
 
 namespace Collections
 {
     public class Hand : Collection
     {
+        public Path HoldPath;
+
         protected override void Awake()
         {
             Controller = GetManager<HandController>();
@@ -23,10 +26,18 @@ namespace Collections
 
             for (var i = 0; i < Constants.handSize; i++)
             {
-                var arg = i;
-                var button = game.CreateCardButton(transform);
-                button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(arg));
+                AddButton(i);
             }
+        }
+
+        public override Button AddButton(int index)
+        {
+            var button = game.CreateCardButton(transform);
+            button.transform.SetSiblingIndex(index);
+            button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(index));
+            button.rectTransform().localPosition = HoldPath.GetPoint(index);
+            button.rectTransform().Grow();
+            return button;
         }
 
         private void UpdateView(List<Card> cards, Func<int, bool> isInteractible) {
