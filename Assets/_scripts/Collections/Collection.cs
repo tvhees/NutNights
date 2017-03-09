@@ -9,6 +9,7 @@ namespace Collections
 {
     public interface ICollectionObject
     {
+        void AddButtons(int number);
         Button AddButton(int index);
         void RemoveButton(int index);
         void UpdateView(List<Card> cards);
@@ -29,6 +30,17 @@ namespace Collections
         public void SwapCards(int i, int j)
         {
             Controller.SwapCards(i, j);
+        }
+
+        public virtual void AddButtons(int number)
+        {
+            if (transform.childCount > 0)
+                return;
+
+            for (var i = 0; i < number; i++)
+            {
+                AddButton(i);
+            }
         }
 
         public abstract Button AddButton(int index);

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using Components;
 using Controllers;
 using GameData;
@@ -15,12 +14,12 @@ namespace Collections
             base.Awake();
         }
 
-        public void AddButtons()
+        public override void AddButtons(int number)
         {
             if (transform.childCount > 0)
                 return;
 
-            for (var i = 0; i < Constants.prophecySize; i++)
+            for (var i = 0; i < number; i++)
             {
                 var arg = i;
                 var button = game.CreateCardButton(transform);

@@ -20,6 +20,12 @@ namespace Tests
             deck.OnGameStart();
         }
 
+        [TestFixtureTearDown]
+        public void TearDown()
+        {
+            Object.DestroyImmediate(deck);
+        }
+
         [Test]
         public void NewDeckIsNotEmpty()
         {
@@ -46,12 +52,6 @@ namespace Tests
             Assert.IsTrue(deck.Size == size + 1);
             Assert.IsTrue(deck.GetCard(size) == card);
 
-        }
-
-        [TestFixtureTearDown]
-        public void TearDown()
-        {
-            Object.DestroyImmediate(deck);
         }
     }
 }

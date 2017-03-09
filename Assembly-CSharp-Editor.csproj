@@ -92,6 +92,7 @@
     <Compile Include="Assets\_scripts\GameStates\Editor\StateEditor.cs" />
     <Compile Include="Assets\_scripts\Tests\Editor\DeckControllerTest.cs" />
     <Compile Include="Assets\_scripts\Tests\Editor\HandControllerTest.cs" />
+    <Compile Include="Assets\_scripts\Tests\Editor\ProphecyControllerTest.cs" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\materials\Sprite-OuterFill.shader" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />

@@ -4,7 +4,6 @@ using GameData;
 using UnityEngine;
 using System;
 using Components;
-using DG.Tweening;
 using UnityEngine.UI;
 
 namespace Collections
@@ -17,17 +16,6 @@ namespace Collections
         {
             Controller = GetManager<HandController>();
             base.Awake();
-        }
-
-        public void AddButtons()
-        {
-            if (transform.childCount > 0)
-                return;
-
-            for (var i = 0; i < Constants.handSize; i++)
-            {
-                AddButton(i);
-            }
         }
 
         public override Button AddButton(int index)

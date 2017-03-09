@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Collections;
 using GameData;
 using UnityEngine;
@@ -44,11 +42,6 @@ namespace Controllers
             Indices.RemoveAt(index);
             CollectionObject.RemoveButton(index);
             base.MoveCardTo(target, index, toFront);
-        }
-
-        private int HandIndexFromRealIndex(int index)
-        {
-            return Indices[index];
         }
 
         public override void AddCard(Card card)

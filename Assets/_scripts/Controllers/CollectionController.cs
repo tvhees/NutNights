@@ -17,6 +17,7 @@ namespace Controllers
     {
         protected ICollectionObject CollectionObject;
 
+        [SerializeField]
         protected List<Card> Cards = new List<Card>();
 
         public bool IsEmpty
@@ -65,7 +66,6 @@ namespace Controllers
             if (IsEmpty)
                 return;
             var index = Cards.IndexOf(cardDef);
-            Assert.IsFalse(index < 0, index + " " + cardDef.color + " " + cardDef.type);
             MoveCardTo(target, index);
         }
 

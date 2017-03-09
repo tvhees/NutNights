@@ -1,4 +1,5 @@
-﻿using Collections;
+﻿using System;
+using Collections;
 using GameData;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Controllers
         {
             if (ObtainedAll(color))
                 return;
+
             source.MoveCardTo(this, Card.Door(color));
             source.Shuffle();
         }

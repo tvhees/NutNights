@@ -11,7 +11,7 @@ namespace Controllers
 
         public override void OnGameStart(params Collection[] dependencies)
         {
-            ((Prophecy)CollectionObject).AddButtons();
+            CollectionObject.AddButtons(Constants.prophecySize);
             base.OnGameStart(dependencies);
         }
     }
