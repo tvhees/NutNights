@@ -9,10 +9,19 @@ namespace Controllers
     {
         public bool IsFull { get { return Cards.Count >= Constants.prophecySize; } }
 
-        public override void OnGameStart(params Collection[] dependencies)
+        public override void MoveCardTo(ICollectionController target, int index, bool toFront = false)
         {
-            CollectionObject.AddButtons(Constants.prophecySize);
-            base.OnGameStart(dependencies);
+            Indices.RemoveAt(index);
+            CollectionObject.RemoveButton(index);
+            base.MoveCardTo(target, index, toFront);
+        }
+
+        public override void AddCard(Card card)
+        {
+            var index = LowestEmptyIndex;
+            CollectionObject.AddButton(index);
+            Indices.Insert(index, index);
+            InsertCard(card, index);
         }
     }
 }

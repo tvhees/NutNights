@@ -8,30 +8,23 @@ namespace Collections
 {
     public class Prophecy : Collection {
 
+        public Path HoldPath;
+
         protected override void Awake()
         {
             Controller = GetManager<ProphecyController>();
             base.Awake();
         }
 
-        public override void AddButtons(int number)
-        {
-            if (transform.childCount > 0)
-                return;
-
-            for (var i = 0; i < number; i++)
-            {
-                var arg = i;
-                var button = game.CreateCardButton(transform);
-                button.onClick.AddListener(() => GetManager<GameController>().OnProphecyCardPressed(arg));
-                button.gameObject.AddComponent<Rearrangable>();
-                button.gameObject.SetActive(false);
-            }
-        }
-
         public override Button AddButton(int index)
         {
-            throw new System.NotImplementedException();
+            var button = game.CreateCardButton(transform);
+            button.transform.SetSiblingIndex(index);
+            button.onClick.AddListener(() => GetManager<GameController>().OnProphecyCardPressed(index));
+            button.gameObject.AddComponent<Rearrangable>();
+            button.rectTransform().localPosition = HoldPath.GetPoint(index);
+            button.rectTransform().Grow();
+            return button;
         }
 
         public override void UpdateView(List<Card> cards)

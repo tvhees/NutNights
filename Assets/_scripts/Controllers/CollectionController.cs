@@ -30,9 +30,26 @@ namespace Controllers
             get { return Cards.Count; }
         }
 
+        public List<int> Indices { get; protected set; }
+
+        public int LowestEmptyIndex {
+            get
+            {
+                for (var i = 0; i < Indices.Count; i++)
+                {
+                    if (Indices[i] > i)
+                    {
+                        return i;
+                    }
+                }
+                return Indices.Count;
+            }
+        }
+
         public virtual void OnGameStart(params Collection[] dependencies)
         {
             Cards = new List<Card>();
+            Indices = new List<int>();
             UpdateView();
         }
 
