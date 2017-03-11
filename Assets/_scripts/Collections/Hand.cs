@@ -22,7 +22,7 @@ namespace Collections
         {
             var button = game.CreateCardButton(transform);
             button.transform.SetSiblingIndex(index);
-            button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(index));
+            button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(button.transform.GetSiblingIndex()));
             button.rectTransform().localPosition = HoldPath.GetPoint(index);
             button.rectTransform().Grow();
             return button;
