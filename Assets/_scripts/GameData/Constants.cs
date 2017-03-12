@@ -10,7 +10,7 @@ namespace GameData
         public const int nightmareSize = 5;
         [System.Serializable]
         public enum CardType { Acorn = 6, Hickory = 4, Almond = 3, Nightmare = 10, Squirrel = 2 }
-        public static List<Color> colors = new List<Color>{ Color.gray, Color.green, Color.blue, Color.red };
+        public static List<Color> colors = new List<Color>{ Color.yellow, Color.green, Color.blue, Color.red };
         static CardType[] suitTypes = { CardType.Squirrel, CardType.Almond, CardType.Hickory, CardType.Acorn };
 
         public static List<Card> CreateStartingDeck()

@@ -17,28 +17,32 @@ namespace Collections
             base.Awake();
         }
 
-        public override Button AddButton(Button button, int index = 0)
+        public override Button AddButton(Button newButton, int index = 0)
         {
-            ShiftButtons();
-            var btn = base.AddButton(button, index);
-            btn.rectTransform().localPosition = HoldPath.GetPoint(0);
-            return btn;
+            ShiftExistingButtons();
+            newButton.interactable = false;
+            newButton.transform.SetParent(this.transform);
+            newButton.LocalMoveTo(HoldPath.GetPoint(1.0f));
+            HoldPath.AddPoint(50 * Vector3.left);
+            return newButton;
         }
 
-        private void ShiftButtons()
+        private void ShiftExistingButtons()
         {
-            HoldPath.AddPoint(50 * Vector3.left);
             var buttons = GetComponentsInChildren<Button>();
             foreach (var btn in buttons)
             {
-                Debug.Log(btn.transform.GetSiblingIndex());
-                btn.rectTransform().localPosition = HoldPath.GetPoint(btn.transform.GetSiblingIndex() + 1);
+                btn.LocalMoveTo(HoldPath.GetPoint(btn.transform.GetSiblingIndex() + 1))
+                    .Rotate(360 * Vector3.forward);
             }
         }
 
         public override void UpdateView(List<Card> cards)
         {
-            // Left blank
+            if (HoldPath.Points.Length - transform.childCount > 2)
+            {
+                HoldPath.Reset();
+            }
         }
     }
 }

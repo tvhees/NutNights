@@ -2,7 +2,6 @@
 using Controllers;
 using GameData;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace Collections
@@ -14,7 +13,6 @@ namespace Collections
         Button AddButton(Button button, int index = 0);
         void RemoveButton(int index);
         void UpdateView(List<Card> cards);
-
     }
 
     [ManagerDependency(typeof(ManagerContainer))]
@@ -32,6 +30,11 @@ namespace Collections
         public void SwapCards(int i, int j)
         {
             Controller.SwapCards(i, j);
+        }
+
+        public void ResetCollection()
+        {
+            throw new System.NotImplementedException();
         }
 
         public Button GetButton(int index)
