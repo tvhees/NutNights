@@ -9,10 +9,12 @@ namespace Collections
 {
     public interface ICollectionObject
     {
-        void AddButtons(int number);
+        Button GetButton(int index);
         Button AddButton(int index);
+        Button AddButton(Button button, int index = 0);
         void RemoveButton(int index);
         void UpdateView(List<Card> cards);
+
     }
 
     [ManagerDependency(typeof(ManagerContainer))]
@@ -32,18 +34,23 @@ namespace Collections
             Controller.SwapCards(i, j);
         }
 
-        public virtual void AddButtons(int number)
+        public Button GetButton(int index)
         {
-            if (transform.childCount > 0)
-                return;
-
-            for (var i = 0; i < number; i++)
-            {
-                AddButton(i);
-            }
+            return transform.GetChild(index).GetComponent<Button>();
         }
 
-        public abstract Button AddButton(int index);
+        public virtual Button AddButton(int index)
+        {
+            var button = game.CreateCardButton(transform);
+            return AddButton(button, index);
+        }
+
+        public virtual Button AddButton(Button button, int index = 0)
+        {
+            button.transform.SetParent(this.transform);
+            button.transform.SetSiblingIndex(index);
+            return button;
+        }
 
         public void RemoveButton(int index)
         {

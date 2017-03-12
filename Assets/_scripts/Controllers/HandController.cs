@@ -18,14 +18,18 @@ namespace Controllers
         public override void MoveCardTo(ICollectionController target, int index, bool toFront = false)
         {
             Indices.RemoveAt(index);
-            CollectionObject.RemoveButton(index);
+            CollectionObject.GetButton(index).MoveToNewCollection(target.CollectionObject);
             base.MoveCardTo(target, index, toFront);
         }
 
         public override void AddCard(Card card)
         {
             var index = LowestEmptyIndex;
-            CollectionObject.AddButton(index);
+
+            CollectionObject
+                .AddButton(index)
+                .Grow();
+
             Indices.Insert(index, index);
             InsertCard(card, index);
         }

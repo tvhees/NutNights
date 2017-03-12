@@ -18,9 +18,8 @@ namespace Collections
             base.Awake();
         }
 
-        public override Button AddButton(int index)
+        public override Button AddButton(Button button, int index = 0)
         {
-            var button = game.CreateCardButton(transform);
             button.transform.SetSiblingIndex(index);
             button.onClick.AddListener(() => GetManager<GameController>().OnHandCardPressed(button.transform.GetSiblingIndex()));
             button.rectTransform().localPosition = HoldPath.GetPoint(index);

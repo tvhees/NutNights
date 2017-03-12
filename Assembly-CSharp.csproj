@@ -132,6 +132,7 @@
     <Compile Include="Assets\_scripts\Flags.cs" />
     <Compile Include="Assets\_scripts\Game.cs" />
     <Compile Include="Assets\_scripts\GameData\Animations.cs" />
+    <Compile Include="Assets\_scripts\GameData\ButtonExtensions.cs" />
     <Compile Include="Assets\_scripts\GameData\Card.cs" />
     <Compile Include="Assets\_scripts\GameData\Constants.cs" />
     <Compile Include="Assets\_scripts\GameStates\CheckingWinLoss.cs" />

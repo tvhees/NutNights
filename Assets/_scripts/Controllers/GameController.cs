@@ -136,7 +136,6 @@ namespace Controllers
 
         public void OnHandCardPressed(int i)
         {
-            Debug.Log(i);
             var card = hand.GetCard(i);
             if (Flags.isDiscarding)
             {

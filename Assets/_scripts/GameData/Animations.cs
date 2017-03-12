@@ -10,5 +10,10 @@ namespace GameData
             rect.sizeDelta = Vector2.zero;
             rect.DOSizeDelta(new Vector2(100, 160), 2f);
         }
+
+        public static void GoToHome(this RectTransform rect)
+        {
+            rect.DOAnchorPos(Vector2.zero, 1.0f);
+        }
     }
 }

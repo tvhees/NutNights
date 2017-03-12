@@ -42,6 +42,7 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
         button.transform.SetParent(parent);
         button.rectTransform().Reset();
         button.rectTransform().sizeDelta = new Vector2(100, 160);
+        button.onClick.RemoveAllListeners();
         return button;
     }
 

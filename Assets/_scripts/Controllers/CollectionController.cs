@@ -11,11 +11,12 @@ namespace Controllers
     {
         void AddCard(Card card);
         void InsertCard(Card card, int index = 0);
+        ICollectionObject CollectionObject { get; }
     }
 
     public abstract class CollectionController : Manager, ICollectionController
     {
-        protected ICollectionObject CollectionObject;
+        public ICollectionObject CollectionObject { get; protected set; }
 
         [SerializeField]
         protected List<Card> Cards = new List<Card>();

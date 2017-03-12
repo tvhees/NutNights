@@ -21,10 +21,10 @@ namespace Components
             points = new[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0) };
         }
 
-        public void AddPoint()
+        public void AddPoint(Vector3 increment = default(Vector3))
         {
             var index = points.Length;
-            var point = points[index - 1] + Vector3.right;
+            var point = points[index - 1] + increment;
             Array.Resize(ref points, points.Length + 1);
             points[index] = point;
         }

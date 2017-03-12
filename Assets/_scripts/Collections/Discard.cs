@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Controllers;
 using GameData;
 using UnityEngine;
@@ -16,9 +17,10 @@ namespace Collections
             base.Awake();
         }
 
-        public override Button AddButton(int index)
+        public override Button AddButton(Button button, int index = 0)
         {
-            throw new System.NotImplementedException();
+            game.ReturnCardButton(button);
+            return button;
         }
 
         public override void UpdateView(List<Card> cards)
