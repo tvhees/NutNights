@@ -20,7 +20,20 @@ namespace GameData
 
         public static Button LocalMoveTo(this Button button, Vector3 endValue, float duration = 1.0f)
         {
+            Debug.Log(endValue);
             button.transform.DOLocalMove(endValue, duration);
+            return button;
+        }
+
+        public static Button LocalMoveX(this Button button, float endValue, float duration = 1.0f)
+        {
+            button.transform.DOLocalMoveX(endValue, duration);
+            return button;
+        }
+
+        public static Button LocalMoveY(this Button button, float endValue, float duration = 1.0f)
+        {
+            button.transform.DOLocalMoveY(endValue, duration);
             return button;
         }
 

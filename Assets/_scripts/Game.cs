@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Collections;
+﻿using Collections;
 using Controllers;
 using GameData;
-using RSG;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +10,7 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
     private HandController handController;
     private GameController gameController;
     private StateController stateController;
-    public IObjectPool objectPool;
+    public IObjectPool ObjectPool;
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Toggle discardToggle;
@@ -27,7 +23,6 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
         gameController = GetManager<GameController>();
         handController = GetManager<HandController>();
         stateController = GetManager<StateController>();
-        base.Awake();
         gameController.SetGameObject(this);
     }
 
@@ -38,7 +33,7 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
 
     public Button CreateCardButton(Transform parent)
     {
-        var button = objectPool.GetObject().GetComponent<Button>();
+        var button = ObjectPool.GetObject().GetComponent<Button>();
         button.transform.SetParent(parent);
         button.rectTransform().Reset();
         button.rectTransform().sizeDelta = new Vector2(100, 160);
@@ -54,7 +49,7 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
 
     public void ReturnCardButton(Button button)
     {
-        objectPool.ReturnObject(button.gameObject);
+        ObjectPool.ReturnObject(button.gameObject);
     }
 
     public void OnDiscardToggled(Toggle discardToggle)
@@ -85,6 +80,6 @@ public class Game : BaseMonoBehaviour, IObjectPoolHolder
 
     public void AddPool(IObjectPool pool)
     {
-        objectPool = pool;
+        ObjectPool = pool;
     }
 }

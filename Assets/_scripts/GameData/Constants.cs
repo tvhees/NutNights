@@ -8,6 +8,7 @@ namespace GameData
         public const int handSize = 5;
         public const int prophecySize = 5;
         public const int nightmareSize = 5;
+        public const int animationSpeed = 1;
         [System.Serializable]
         public enum CardType { Acorn = 6, Hickory = 4, Almond = 3, Nightmare = 10, Squirrel = 2 }
         public static List<Color> colors = new List<Color>{ Color.yellow, Color.green, Color.blue, Color.red };

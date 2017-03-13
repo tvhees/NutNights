@@ -61,7 +61,7 @@ namespace Controllers
 
         public void ResetGame()
         {
-            gameObj.objectPool.Reset();
+            gameObj.ObjectPool.Reset();
         }
 
         public void DrawCardRecursive()
