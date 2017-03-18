@@ -31,11 +31,9 @@ C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\ICSharpCode
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Unity.UNetWeaver.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Mono.Cecil.Mdb.dll
-C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Mono.Posix.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Mono.Cecil.Pdb.dll
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Assembly-CSharp.pdb
-C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Assembly-CSharp-Editor-firstpass.pdb
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\UnityEditor.Advertisements.xml
@@ -68,3 +66,5 @@ C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween43.x
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween46.xml
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTween50.xml
 C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\DOTweenEditor.xml
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Mono.Posix.dll
+C:\Users\Torbjorn\Documents\HigherLevel\Onirim\Onirim\Temp\bin\Debug\Assembly-CSharp-Editor-firstpass.pdb

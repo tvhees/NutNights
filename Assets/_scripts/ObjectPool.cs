@@ -15,7 +15,7 @@ public interface IObjectPool {
     GameObject GetObject(int index);
     GameObject GetObject(string searchName);
     void ReturnObject(GameObject obj);
-    void Reset();
+    void ReturnAll();
 }
 
 // This class contains methods for creating an object pool
@@ -147,7 +147,7 @@ public class ObjectPool : BaseMonoBehaviour, IObjectPool {
 	}
 
     // Bring ALL objects back to the pool
-    public void Reset()
+    public void ReturnAll()
     {
         while(outOfPool.Count > 0)
             ReturnObject(outOfPool[0]);

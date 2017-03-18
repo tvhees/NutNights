@@ -128,6 +128,7 @@
     <Compile Include="Assets\_scripts\Controllers\LimboController.cs" />
     <Compile Include="Assets\_scripts\Controllers\ProphecyController.cs" />
     <Compile Include="Assets\_scripts\Controllers\StateController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\TutorialController.cs" />
     <Compile Include="Assets\_scripts\ExtensionMethods.cs" />
     <Compile Include="Assets\_scripts\Flags.cs" />
     <Compile Include="Assets\_scripts\Game.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Assets\_scripts\ObjectPool.cs" />
     <Compile Include="Assets\_scripts\Tutorial.cs" />
     <Compile Include="Assets\_scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\_scripts\UI\TutorialMessage.cs" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\materials\Sprite-OuterFill.shader" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
