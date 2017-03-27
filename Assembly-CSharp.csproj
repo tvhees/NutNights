@@ -115,6 +115,7 @@
     <Compile Include="Assets\_scripts\Collections\Limbo.cs" />
     <Compile Include="Assets\_scripts\Collections\Prophecy.cs" />
     <Compile Include="Assets\_scripts\Components\AnimateOnEvent.cs" />
+    <Compile Include="Assets\_scripts\Components\MenuItem.cs" />
     <Compile Include="Assets\_scripts\Components\Path.cs" />
     <Compile Include="Assets\_scripts\Components\Rearrangable.cs" />
     <Compile Include="Assets\_scripts\Components\SpriteOutline.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\_scripts\Controllers\HandController.cs" />
     <Compile Include="Assets\_scripts\Controllers\LabyrinthController.cs" />
     <Compile Include="Assets\_scripts\Controllers\LimboController.cs" />
+    <Compile Include="Assets\_scripts\Controllers\MenuController.cs" />
     <Compile Include="Assets\_scripts\Controllers\ProphecyController.cs" />
     <Compile Include="Assets\_scripts\Controllers\StateController.cs" />
     <Compile Include="Assets\_scripts\Controllers\TutorialController.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Assets\_scripts\GameData\ButtonExtensions.cs" />
     <Compile Include="Assets\_scripts\GameData\Card.cs" />
     <Compile Include="Assets\_scripts\GameData\Constants.cs" />
+    <Compile Include="Assets\_scripts\GameData\GlobalSettings.cs" />
     <Compile Include="Assets\_scripts\GameStates\CheckingWinLoss.cs" />
     <Compile Include="Assets\_scripts\GameStates\Cleanup.cs" />
     <Compile Include="Assets\_scripts\GameStates\CompleteProphecy.cs" />
@@ -151,7 +154,7 @@
     <Compile Include="Assets\_scripts\GameStates\WaitingForPlayer.cs" />
     <Compile Include="Assets\_scripts\ObjectPool.cs" />
     <Compile Include="Assets\_scripts\Tutorial.cs" />
-    <Compile Include="Assets\_scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\_scripts\UI\MenuTextAnimator.cs" />
     <Compile Include="Assets\_scripts\UI\TutorialMessage.cs" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\materials\Sprite-OuterFill.shader" />

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Tutorial : BaseMonoBehaviour
 {
     public int Seed;
+    private TutorialController tm;
 
     protected override void Awake()
     {
@@ -27,6 +28,7 @@ public class Tutorial : BaseMonoBehaviour
         {
             yield return null;
         }
-        GetManager<TutorialController>().DisplayMessage("This is a tutorial message", Vector2.zero);
+        tm = GetGlobalManager<TutorialController>();
+        tm.StartTutorial();
     }
 }

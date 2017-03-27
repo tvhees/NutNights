@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace Controllers
 {
-    public class MainMenu : MonoBehaviour {
-
+    [CreateAssetMenu(fileName = "MenuController.asset", menuName = "Controllers/Menu")]
+    public class MenuController : Manager
+    {
         public void StartNewGame()
         {
             SceneManager.LoadSceneAsync("Game");
@@ -13,6 +14,11 @@ namespace UI
         public void StartTutorialGame()
         {
             SceneManager.LoadSceneAsync("Tutorial");
+        }
+
+        public void ReturnToMenu()
+        {
+            SceneManager.LoadSceneAsync("Menu");
         }
     }
 }

@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using RSG;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public static class ExtensionMethods
 {
@@ -12,6 +16,14 @@ public static class ExtensionMethods
     public static RectTransform rectTransform(this GameObject param)
     {
         return param.transform as RectTransform;
+    }
+
+    public static Func<IPromise> Delay(this Func<IPromise> promise, IPromiseTimer timer, float seconds)
+    {
+        return () => Promise.Sequence(
+            () => timer.WaitFor(seconds),
+            promise
+        );
     }
 
     /// <summary>
