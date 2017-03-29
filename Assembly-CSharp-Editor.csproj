@@ -88,6 +88,9 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\RenderingOptions.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestComponentEditor.cs" />
     <Compile Include="Assets\_scripts\Editor\AnimateOnEventEditor.cs" />
+    <Compile Include="Assets\_scripts\Editor\PaletteColorDrawer.cs" />
+    <Compile Include="Assets\_scripts\Editor\PalettePopup.cs" />
+    <Compile Include="Assets\_scripts\Editor\PaletteWindow.cs" />
     <Compile Include="Assets\_scripts\Editor\PathEditor.cs" />
     <Compile Include="Assets\_scripts\GameStates\Editor\StateEditor.cs" />
     <Compile Include="Assets\_scripts\Tests\Editor\DeckControllerTest.cs" />

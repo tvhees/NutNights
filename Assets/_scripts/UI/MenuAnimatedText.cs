@@ -28,8 +28,8 @@ namespace UI
         [System.Serializable]
         public class Settings
         {
-            public Color TextColor;
-            public Color OutlineColor;
+            [PaletteColor] public Color TextColor;
+            [PaletteColor] public Color OutlineColor;
             [Range(0.1f, 5f)]
             public float AnimationSpeed;
             public float AnimationTime {get { return 1 / AnimationSpeed; } }

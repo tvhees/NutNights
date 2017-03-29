@@ -8,6 +8,21 @@ using Random = UnityEngine.Random;
 
 public static class ExtensionMethods
 {
+    public static bool MainActionKeyForControl(this Event evt, int controlId)
+    {
+        if (GUIUtility.keyboardControl != controlId)
+        {
+            return false;
+        }
+        bool flag = ((evt.alt || evt.shift) || evt.command) || evt.control;
+        if (((evt.type == EventType.KeyDown) && (evt.character == ' ')) && !flag)
+        {
+            evt.Use();
+            return false;
+        }
+        return (((evt.type == EventType.KeyDown) && (((evt.keyCode == KeyCode.Space) || (evt.keyCode == KeyCode.Return)) || (evt.keyCode == KeyCode.KeypadEnter))) && !flag);
+    }
+
     public static RectTransform rectTransform<T>(this T param) where T : Component
     {
         return param.transform as RectTransform;
